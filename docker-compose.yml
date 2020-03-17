@@ -1,0 +1,79 @@
+version: '3.7'
+
+services:
+  #Front End
+  front:
+    build:
+      context: .
+      dockerfile: react.dockerfile
+    image: emanoel-bruno/front
+    container_name: front
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3000:3000"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/html/front
+    volumes:
+      - ./front/src:/var/www/html/front/src
+      - ./front/package.json:/var/www/html/front/package.json
+    networks:
+      - mynet
+  
+  back:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    image: emanoel-bruno/back
+    container_name: back
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: back
+      SERVICE_TAGS: dev
+      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+    working_dir: /var/www/html
+    volumes:
+      - ./back:/var/www/html/back
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - mynet
+  
+  #Nginx Service
+  nginx:
+    image: nginx:1.14.2-alpine
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./back:/var/www/html/back
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./log/nginx/:/var/log/nginx/
+    networks:
+      - mynet
+
+  db:
+    image: mariadb:bionic
+    restart: unless-stopped
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+    volumes: 
+       - mariadbdata
+    networks:
+       - mynet
+
+#Docker Networks
+networks:
+  mynet:
+    driver: bridge
+#Volumes
+volumes:
+  mariadbdata:
+    driver: local
+  
