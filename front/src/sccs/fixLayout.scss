@@ -1,0 +1,9 @@
+@include react-md-layout;
+
+span[to='/login-/signup']{
+    pointer-events: none!important;
+
+}
+span[to='/login-/signup'] span{
+    pointer-events: all;
+}

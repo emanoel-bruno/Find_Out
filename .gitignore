@@ -27,3 +27,4 @@
 ./front/yarn-debug.log*
 ./front/yarn-error.log*
 ./front/sass-cache
+node_modules

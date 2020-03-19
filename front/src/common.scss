@@ -1,8 +1,49 @@
-@import 'sccs/default/colors';
-@import 'sccs/default/fonts';
-h1{
-    color: $primary-color;
+@import 'index';
+
+h1 {
+  color: $rmd-theme-primary;
 }
-h2{
-    color: $secondary-color;
+h2 {
+  color: $rmd-theme-secondary;
+}
+
+.d-none {
+  visibility: hidden !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -9999px !important;
+}
+
+.grid {
+  display: grid !important;
+}
+
+.col-2 {
+  grid-template-columns: auto auto !important;
+}
+
+.hv-center {
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.menu-positioning-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-positioning-group {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#layout-nav-tree .rmd-icon {
+  color: $rmd-theme-primary;
+}
+
+#layout-header .rmd-icon {
+  color: $rmd-theme-light-surface;
 }

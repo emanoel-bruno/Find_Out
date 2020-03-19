@@ -1,34 +1,33 @@
 interface Main {
-    name: string,
-    url: string,
-    api: string,
-    content: string
+  api: string
+  content: string
+  name: string
+  url: string
 }
 
 interface User {
-    name: string,
-    auth_token: string,
-    user_type: string
+  authToken: string
+  name: string
+  userType: string
 }
 
 export interface State {
-    main:Main,
-    user:User
+  main: Main
+  user: User
 }
 
-const defaultState:State={
-    main: {
-        name: "Find Out",
-        url: "localhost",
-        api: "/back/api",
-        content: "HOME"
-    },
-    user: {
-        name: "",
-        auth_token: "",
-        user_type: ""
-    },
-
+const defaultState: State = {
+  main: {
+    api: '/back/api',
+    content: 'HOME',
+    name: 'Find Out',
+    url: 'localhost'
+  },
+  user: {
+    authToken: '',
+    name: '',
+    userType: ''
+  }
 }
 
-export default defaultState;
+export default defaultState

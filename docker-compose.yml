@@ -21,7 +21,7 @@ services:
       - ./front/package.json:/var/www/html/front/package.json
     networks:
       - mynet
-  
+
   back:
     build:
       context: .
@@ -31,16 +31,16 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: back
-      SERVICE_TAGS: dev
-      XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+      - SERVICE_NAME=back
+      - SERVICE_TAGS=dev
+      - XDEBUG_CONFIG=remote_host=host.docker.internal remote_port=9000 remote_enable=1
     working_dir: /var/www/html
     volumes:
       - ./back:/var/www/html/back
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - mynet
-  
+
   #Nginx Service
   nginx:
     image: nginx:1.14.2-alpine
@@ -62,11 +62,27 @@ services:
     restart: unless-stopped
     container_name: db
     environment:
-      MYSQL_ROOT_PASSWORD: test
-    volumes: 
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=laravel
+    ports:
+       - "3306:3306"
+    volumes:
        - mariadbdata
     networks:
        - mynet
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - 8080:80
+    volumes:
+      - /sessions
+    networks:
+      - mynet
 
 #Docker Networks
 networks:
@@ -76,4 +92,3 @@ networks:
 volumes:
   mariadbdata:
     driver: local
-  

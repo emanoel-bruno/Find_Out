@@ -1,28 +1,28 @@
-import './index.scss'
-import * as React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { Configuration } from 'react-md'
-import { createStore, applyMiddleware, compose  } from 'redux'
-import thunkMiddleware  from 'redux-thunk'
-
-import rootReducer from './reducers/rootReducer'
-import loggerMiddleware from './middleware/logger'
-import monitorReducerEnhancer from './enhancers/monitorReducer'
-
+import { applyMiddleware, compose, createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import App from './components/App'
 import defaultState from './state'
+import loggerMiddleware from './middleware/logger'
+import monitorReducerEnhancer from './enhancers/monitorReducer'
+import rootReducer from './reducers/rootReducer'
 
-const middlewareEnhancer = applyMiddleware(loggerMiddleware, thunkMiddleware );
-const composedEnhancers:any = compose(middlewareEnhancer, monitorReducerEnhancer);
+import './common.scss'
+import './index.scss'
 
-const store = createStore(rootReducer, defaultState, composedEnhancers);
+const middlewareEnhancer = applyMiddleware(loggerMiddleware, thunkMiddleware)
+const composedEnhancers: any = compose(
+  middlewareEnhancer,
+  monitorReducerEnhancer
+)
 
-ReactDOM.render( 
-    <Configuration>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </Configuration>
-    ,document.getElementById('root')
-);
+const store = createStore(rootReducer, defaultState, composedEnhancers)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)

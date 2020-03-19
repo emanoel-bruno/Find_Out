@@ -1,5 +1,6 @@
 rm home/home.tsx;
 rm login/login.tsx;
+rm signup/signup.tsx;
 rm comissoes/comissoes.tsx;
 rm contratos/contratos.tsx;
 rm deputados/deputados.tsx;
@@ -43,6 +44,20 @@ class Login extends React.Component<never, any> {\n\
   }\n\
 }\n\
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login) as React.ComponentType<any>);">login/login.tsx;
+printf "import { withRouter, RouteProps } from 'react-router-dom';\n\
+import * as React from 'react';\n\
+import { connect } from 'react-redux'\n\
+interface Props {\n\
+  name:string\n\
+}\n\
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({});
+class SignUp extends React.Component<never, any> {\n\
+  render(){\n\
+    return <h1>SignUp</h1>\n\
+  }\n\
+}\n\
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp) as React.ComponentType<any>);">signup/signup.tsx;
 printf "import { withRouter, RouteProps } from 'react-router-dom';\n\
 import * as React from 'react';\n\
 import { connect } from 'react-redux'\n\

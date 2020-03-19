@@ -1,8 +1,8 @@
 {
     "outline.problems.badges": false,
     "problems.autoReveal": false,
-    "outline.problems.colors": false,
-    "outline.problems.enabled": false,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
-    "javascript.validate.enable": false
+    "javascript.validate.enable": false,
+    "problems.showCurrentInStatus": true,
+    "git.ignoreLimitWarning": true
 }
