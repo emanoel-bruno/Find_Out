@@ -1,33 +1,55 @@
-interface Main {
-  api: string
-  content: string
-  name: string
-  url: string
+export interface MainState {
+  name: string;
+  theme: string;
 }
 
-interface User {
-  authToken: string
-  name: string
-  userType: string
+export interface UserState {
+  authToken: string;
+  name: string;
 }
 
-export interface State {
-  main: Main
-  user: User
+export interface ApiState {
+  base: string;
+  setUser: string;
 }
 
-const defaultState: State = {
-  main: {
-    api: '/back/api',
-    content: 'HOME',
-    name: 'Find Out',
-    url: 'localhost'
-  },
-  user: {
-    authToken: '',
-    name: '',
-    userType: ''
-  }
+export interface TabState {
+  tab: string;
+  route: string;
 }
 
-export default defaultState
+export interface AppState {
+  api: ApiState;
+  main: MainState;
+  tab: TabState;
+  user: UserState;
+}
+
+export const apiInitial: ApiState = {
+  base: 'http://localhost:80',
+  setUser: '/register'
+};
+
+export const mainInitial: MainState = {
+  name: 'Find Out',
+  theme: 'light'
+};
+
+export const tabInitial: TabState = {
+  tab: '',
+  route: 'HOME'
+};
+
+export const userInitial: UserState = {
+  name: '',
+  authToken: ''
+};
+
+const defaultState: AppState = {
+  api: apiInitial,
+  main: mainInitial,
+  tab: tabInitial,
+  user: userInitial
+};
+
+export default defaultState;

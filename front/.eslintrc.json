@@ -27,42 +27,16 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "react-hooks"],
   "rules": {
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "array-bracket-spacing": "error",
-    "arrow-parens": "error",
-    "block-spacing": "error",
-    "brace-style": "error",
-    "camelcase": "error",
-    "computed-property-spacing": "error",
-    "key-spacing": "error",
-    "newline-after-var": "error",
-    "newline-before-return": "error",
-    "newline-per-chained-call": "error",
-    "no-dupe-keys": "error",
-    "no-extra-semi": "error",
-    "no-useless-constructor": "error",
-    "no-multiple-empty-lines": "error",
-    "object-curly-newline":"error",
-    "padded-blocks": "error",
+    "semi":"error",
     "prettier/prettier": [
       "error",
       {
-        "printWidth": 80,
         "eslintIntegration": true,
         "stylelintIntegration": true,
-        "tabWidth": 2,
         "singleQuote": true,
-        "semi": false,
-        "endOfLine":"auto"
+        "semi": true
       }
     ],
-    "require-jsdoc":"off",
-    "sort-keys": "error",
-    "sort-vars": "error",
-    "space-before-blocks": "error",
-    "space-in-parens": "error",
-    "spaced-comment": "warn"
+    "require-jsdoc":"off"
   }
 }

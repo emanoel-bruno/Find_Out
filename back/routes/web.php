@@ -1,5 +1,5 @@
 <?php
-use Http\Controllers\UserController
+use Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +10,8 @@ use Http\Controllers\UserController
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('');
+
+Route::group(['middleware' => ['web', 'activity']], function () {
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
 });
-Route::post('/create/user', 'UserController@store');

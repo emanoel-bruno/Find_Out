@@ -1,67 +1,69 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
 /* eslint-disable sort-keys */
-import { Button } from '@react-md/button'
-import { FontIcon } from '@react-md/icon'
-import { LayoutNavigationItem, LayoutNavigationTree } from '@react-md/layout'
-import { DropdownMenu } from '@react-md/menu'
-import { Route } from 'react-router-dom'
-import '../../common.scss'
-import '../../index.scss'
-import '../../index.scss'
+import { Button } from '@react-md/button';
+import { FontIcon } from '@react-md/icon';
+import { LayoutNavigationItem, LayoutNavigationTree } from '@react-md/layout';
+import { DropdownMenu } from '@react-md/menu';
+import { Route } from 'react-router-dom';
+import '../../common.scss';
+import '../../index.scss';
+import '../../index.scss';
 
 type NavType = {
-  itemId: string
-  to: string
-  children: ReactNode | string | undefined
-  leftIcon: ReactNode | undefined
-  parentId: string | null
-  type: string
-}
+  itemId: string;
+  to: string;
+  children: ReactNode | string | undefined;
+  leftIcon: ReactNode | undefined;
+  parentId: string | null;
+  type: string;
+};
 type Item = {
-  name: string
-  to: string
-}
+  name: string;
+  to: string;
+};
 
 type ItemMenu = {
-  name: string
-  to: string
-  items: Item[]
+  name: string;
+  to: string;
+  items: Item[];
+};
+
+function getTerm(text: ReactNode | string | undefined, i: number): string {
+  return text && typeof text == 'string' ? text.split('-', i + 1)[i] : ' ';
 }
 
-function getTerm(text: ReactNode | string | undefined, i: number) {
-  return text && typeof text == 'string' ? text.split('-', i + 1)[i] : ' '
+function getChildren(nav: NavType): string {
+  return nav.children && typeof nav.children == 'string' ? nav.children : ' ';
 }
 
-function getChildren(nav: NavType) {
-  return nav.children && typeof nav.children == 'string' ? nav.children : ' '
-}
-
-const makeChild = (nav: NavType) => {
+const makeChild = (nav: NavType): ReactNode => {
   switch (nav.type) {
     case 'Button':
       return (
         <Route
-          render={({ history }) => (
+          render={({ history }): ReactNode => (
             <Button
               theme="clear"
-              onClick={() => {
-                history.push(nav.to)
+              themeType="flat"
+              onClick={(): void => {
+                history.push(nav.to);
               }}
             >
               {nav.children}
             </Button>
           )}
         />
-      )
+      );
     case 'Dual Button':
       return (
-        <div className="grid col-2 hv-center">
+        <div className="d-grid col-2 space-between">
           <Route
-            render={({ history }) => (
+            render={({ history }): ReactNode => (
               <Button
                 theme="clear"
-                onClick={() => {
-                  history.push(getTerm(nav.to, 0))
+                themeType="flat"
+                onClick={(): void => {
+                  history.push(getTerm(nav.to, 0));
                 }}
               >
                 {getTerm(nav.children, 0)}
@@ -69,11 +71,12 @@ const makeChild = (nav: NavType) => {
             )}
           />
           <Route
-            render={({ history }) => (
+            render={({ history }): ReactNode => (
               <Button
                 theme="clear"
-                onClick={() => {
-                  history.push(getTerm(nav.to, 1))
+                themeType="flat"
+                onClick={(): void => {
+                  history.push(getTerm(nav.to, 1));
                 }}
               >
                 {getTerm(nav.children, 1)}
@@ -81,32 +84,33 @@ const makeChild = (nav: NavType) => {
             )}
           />
         </div>
-      )
+      );
     case 'Menu':
-      const data: ItemMenu = JSON.parse(getChildren(nav))
-      const routes: ReactNode[] = []
+      const data: ItemMenu = JSON.parse(getChildren(nav));
+      const routes: ReactNode[] = [];
 
       data.items.map((route: Item) => {
         const item = {
           children: (
             <Route
-              render={({ history }) => (
+              render={({ history }): ReactNode => (
                 <Button
-                  onClick={() => {
-                    history.push(data.to + route.to)
+                  onClick={(): void => {
+                    history.push(data.to + route.to);
                   }}
-                  theme="primary"
+                  theme="clear"
+                  themeType="flat"
                 >
                   {route.name}
                 </Button>
               )}
             />
           )
-        }
+        };
 
-        routes.push(item)
-      })
-      console.log(routes)
+        routes.push(item);
+      });
+      console.log(routes);
 
       return (
         <DropdownMenu
@@ -118,16 +122,18 @@ const makeChild = (nav: NavType) => {
           }}
           items={routes}
           menuLabel={data.name}
+          theme="clear"
+          themeType="flat"
           dropdownIcon={<FontIcon>arrow_drop_down</FontIcon>}
           className="drop-down-button"
         >
           <span className="span-dropdown">{data.name}</span>
         </DropdownMenu>
-      )
+      );
     default:
-      return null
+      return null;
   }
-}
+};
 
 function createRoute(
   itemId: string,
@@ -144,7 +150,7 @@ function createRoute(
     parentId,
     to: pathname,
     type
-  }
+  };
 
   return {
     children: makeChild(childData),
@@ -152,7 +158,7 @@ function createRoute(
     leftIcon,
     parentId,
     to: pathname
-  }
+  };
 }
 
 const navItems: LayoutNavigationTree = {
@@ -382,6 +388,6 @@ const navItems: LayoutNavigationTree = {
     null,
     'Menu'
   )
-}
+};
 
-export default navItems
+export default navItems;

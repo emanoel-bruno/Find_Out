@@ -1,0 +1,18 @@
+span[to='/login-/signup'] {
+  pointer-events: none !important;
+}
+span[to='/login-/signup'] span {
+  pointer-events: all;
+}
+
+#layout-nav-tree .rmd-icon {
+  color: $rmd-theme-primary;
+}
+
+#layout-header .rmd-icon {
+  color: $rmd-theme-light-surface;
+}
+
+.rmd-layout-main--offset{
+  padding-top: 0 !important;
+}

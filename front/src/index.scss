@@ -1,8 +1,6 @@
 @import 'variables';
+@import 'overwrite';
 @import '~react-md/dist/react-md';
-@import 'sccs/App';
-@import 'sccs/Body';
-@import 'sccs/fixLayout.scss';
 
 @include react-md-theme;
 @include react-md-utils;

@@ -1,4 +1,7 @@
 @import '~@react-md/theme/dist/color-palette';
+@import '~@react-md/button/dist/variables';
+@import '~@react-md/states/dist/variables';
+
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Roboto:400,500:700&display=swap';
 
@@ -8,5 +11,3 @@ $rmd-theme-secondary: #0d17ff;
 $rmd-theme-warning: #ffd219;
 $rmd-theme-error: #ff6219;
 $rmd-theme-success: #0dffe7;
-$rmd-theme-light-background: #f5f5f5;
-$rmd-theme-light-surface: rgb(255, 255, 255);

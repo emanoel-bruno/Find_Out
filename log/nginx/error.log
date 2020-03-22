@@ -10,3 +10,18 @@
 2020/03/17 10:42:48 [error] 6#6: *8 directory index of "/var/www/html/" is forbidden, client: 172.21.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
 2020/03/17 10:55:10 [error] 6#6: *11 directory index of "/var/www/html/" is forbidden, client: 172.21.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
 2020/03/17 11:07:18 [error] 6#6: *12 directory index of "/var/www/html/" is forbidden, client: 172.21.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2020/03/21 20:10:47 [error] 6#6: *5 directory index of "/var/www/html/" is forbidden, client: 172.19.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2020/03/21 20:13:42 [error] 6#6: *8 directory index of "/var/www/html/" is forbidden, client: 172.19.0.2, server: , request: "GET / HTTP/1.0", host: "nginx"
+2020/03/21 23:39:10 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:11 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:12 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:13 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:15 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:17 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:21 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:28 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:39:41 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:40:08 [emerg] 1#1: "add_header" directive is not allowed here in /etc/nginx/conf.d/app.conf:12
+2020/03/21 23:47:21 [error] 6#6: *2 open() "/var/www/html/back/public/home" failed (2: No such file or directory), client: 172.19.0.1, server: , request: "GET /home HTTP/1.1", host: "localhost"
+2020/03/21 23:47:27 [error] 6#6: *2 open() "/var/www/html/back/public/home" failed (2: No such file or directory), client: 172.19.0.1, server: , request: "GET /home HTTP/1.1", host: "localhost"
+2020/03/21 23:47:33 [error] 6#6: *2 open() "/var/www/html/back/public/register" failed (2: No such file or directory), client: 172.19.0.1, server: , request: "GET /register HTTP/1.1", host: "localhost"

@@ -1,27 +1,28 @@
 # Imagem base
-FROM php:fpm
+FROM php:7.4-fpm
 
 # Configura diretorio de trabalho
 WORKDIR /var/www/html/back/
 
+RUN apt-get update && apt -y install lsb-release apt-utils wget apt-transport-https ca-certificates && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" |  tee /etc/apt/sources.list.d/php.list
+
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential apt-utils iputils-ping software-properties-common ldap-utils\
-    libpng-dev libjpeg62-turbo-dev libfreetype6-dev unixodbc-dev libldap2-dev\
-    locales telnet wget vim nano git curl libonig-dev\
+RUN apt-get update && apt-get -y install  build-essential iputils-ping software-properties-common ldap-utils \
+    libpng-dev libjpeg62-turbo-dev libfreetype6-dev unixodbc-dev libldap2-dev \
+    locales telnet vim nano git curl libonig-dev libicu-dev\
     gnupg gnupg1 gnupg2 unzip zip jpegoptim optipng pngquant gifsicle
 
-
 # Instala exteçoes PHP
-RUN docker-php-ext-install pdo pdo_mysql mysqli exif pcntl bcmath
+RUN docker-php-ext-install pdo pdo_mysql mysqli exif pcntl bcmath intl
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install gd
 
 # Instala SQLSRV e XDEBUG
-RUN pecl install sqlsrv pdo_sqlsrv xdebug 
+RUN pecl install sqlsrv pdo_sqlsrv xdebug
 RUN docker-php-ext-enable pdo_sqlsrv sqlsrv xdebug
 
-# LDAP	
+# LDAP
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/
 RUN docker-php-ext-install ldap
 

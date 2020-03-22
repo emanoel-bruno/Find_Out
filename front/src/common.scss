@@ -1,49 +1,226 @@
 @import 'index';
 
-h1 {
-  color: $rmd-theme-primary;
-}
-h2 {
-  color: $rmd-theme-secondary;
-}
+// Display
 
 .d-none {
-  visibility: hidden !important;
+  left: -9999px !important;
   position: absolute !important;
   top: 0 !important;
-  left: -9999px !important;
+  visibility: hidden !important;
 }
 
-.grid {
+.d-grid {
   display: grid !important;
 }
 
-.col-2 {
-  grid-template-columns: auto auto !important;
+.d-flex{
+  display: flex;
 }
 
-.hv-center {
-  align-items: center;
+
+// Flex
+
+.f-column{
+  flex-flow: column nowrap;
+}
+
+.f-row{
+  flex-flow: row wrap;
+  align-content: space-between;
+}
+
+.gh-center,
+.rh-center,
+.cv-center{
+ justify-content: center;
+}
+
+.gh-left,
+.cv-up,
+.rh-left{
+  justify-content: flex-start;
+}
+
+.gh-right,
+.cv-down,
+.rh-right{
+  justify-content: flex-end;
+}
+
+.giv-up,
+.rv-up,
+.ch-left{
+  align-items: flex-start;
+}
+
+.giv-middle,
+.rv-middle,
+.ch-center{
+ align-items: center;
+}
+
+.giv-down,
+.rv-down,
+.ch-right{
+  align-items: flex-end;
+}
+
+// Flex Children
+
+.fc-grow{
+  flex-grow: 1;
+}
+
+.fc-not-min{
+  flex-shrink: 0;
+}
+
+.fc-shrink{
+  flex-shrink: 1;
+}
+
+.fc-content{
+  flex-basis: auto;
+}
+
+.fc-width{
+  flex-basis: 0;
+}
+
+// Text
+
+.t-white{
+  color: white !important;
+}
+
+// Layout
+
+.space-between{
+  justify-content: space-between;
+}
+
+.space-around{
+  justify-content: space-around;
+}
+
+.space-evenly{
   justify-content: space-evenly;
-  text-align: center;
-  vertical-align: middle;
 }
 
-.menu-positioning-container {
-  display: flex;
-  justify-content: center;
+.strech{
+  justify-content: stretch;
 }
 
-.menu-positioning-group {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+// Grid
+.gv-up{
+  align-content: flex-start;
+}
+.gv-middle{
+  align-content: center;
+}
+.gv-down{
+  align-content: flex-end;
 }
 
-#layout-nav-tree .rmd-icon {
-  color: $rmd-theme-primary;
+.ghi-center{
+ justify-items: center;
 }
 
-#layout-header .rmd-icon {
-  color: $rmd-theme-light-surface;
+.ghi-left{
+  justify-items: flex-start;
 }
+
+.ghi-right{
+  justify-items: flex-end;
+}
+
+.col-1 { grid-template-columns: repeat(1, 1fr);}
+.col-2 { grid-template-columns: repeat(2, 1fr);}
+.col-3 { grid-template-columns: repeat(3, 1fr);}
+.col-4 { grid-template-columns: repeat(4, 1fr);}
+.col-5 { grid-template-columns: repeat(5, 1fr);}
+.col-6 { grid-template-columns: repeat(6, 1fr);}
+.col-7 { grid-template-columns: repeat(7, 1fr);}
+.col-8 { grid-template-columns: repeat(8, 1fr);}
+.col-9 { grid-template-columns: repeat(9, 1fr);}
+.col-10 { grid-template-columns: repeat(10, 1fr);}
+.col-11 { grid-template-columns: repeat(11, 1fr);}
+.col-12 { grid-template-columns: repeat(12, 1fr);}
+
+.row-1 { grid-template-rows: repeat(1, 1fr);}
+.row-2 { grid-template-rows: repeat(2, 1fr);}
+.row-3 { grid-template-rows: repeat(3, 1fr);}
+.row-4 { grid-template-rows: repeat(4, 1fr);}
+.row-5 { grid-template-rows: repeat(5, 1fr);}
+.row-6 { grid-template-rows: repeat(6, 1fr);}
+.row-7 { grid-template-rows: repeat(7, 1fr);}
+.row-8 { grid-template-rows: repeat(8, 1fr);}
+.row-9 { grid-template-rows: repeat(9, 1fr);}
+.row-10 { grid-template-rows: repeat(10, 1fr);}
+.row-11 { grid-template-rows: repeat(11, 1fr);}
+.row-12 { grid-template-rows: repeat(12, 1fr);}
+
+.g-gap-0{ gap: 0rem 0rem}
+.g-gap-1{ gap: 1.00rem 1.00rem}
+.g-gap-2{ gap: 1.25rem 1.25rem}
+.g-gap-3{ gap: 1.50rem 1.50rem}
+.g-gap-4{ gap: 1.75rem 1.75rem}
+.g-gap-5{ gap: 2.00rem 2.00rem}
+
+// Size
+
+.w-100{
+  width: 100%;
+}
+
+.h-100{
+  height: 100%;
+}
+
+.min-w-100{
+  min-width: 100%;
+}
+
+.min-h-100{
+  min-height: 100%;
+}
+
+.h-100vh{
+  height: 100vh;
+}
+
+.w-100vw{
+  height: 100vw;
+}
+
+// Content
+
+.main-content{
+  padding-top: 3.5rem;
+}
+
+.background-white{
+  background-color: white;
+}
+
+
+// Spacement
+
+.m-0{ margin: 0; }
+.m-1{ margin: 1rem; }
+.m-2{ margin: 1.5rem; }
+.m-3{ margin: 2rem; }
+
+
+.mt-1{ margin-top: 1rem; }
+.mt-2{ margin-top: 1.5rem; }
+.mt-3{ margin-top: 2rem; }
+
+
+.mr-1{ margin-right: 1rem; }
+.mr-2{ margin-right: 1.5rem; }
+.mr-3{ margin-right: 2rem; }
+
+.ml-1{ margin-left: 1rem; }
+.ml-2{ margin-left: 1.5rem; }
+.ml-3{ margin-left: 2rem; }

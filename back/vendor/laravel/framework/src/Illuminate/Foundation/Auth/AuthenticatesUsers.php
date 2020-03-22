@@ -119,7 +119,11 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+       return response()->json( [
+            'name' => $user->name,
+            'email' => $user->email,
+            'authToken' => Auth::user()->getRememberToken(),
+        ] );
     }
 
     /**
@@ -132,8 +136,8 @@ trait AuthenticatesUsers
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
+        return response()->json([
+            "message" =>  "User and Password imcompatibles!",
         ]);
     }
 
@@ -170,7 +174,11 @@ trait AuthenticatesUsers
      */
     protected function loggedOut(Request $request)
     {
-        //
+        return response()->json( [
+            'name' => ' ',
+            'email' => ' ',
+            'authToken' => ' ',
+        ] );
     }
 
     /**
