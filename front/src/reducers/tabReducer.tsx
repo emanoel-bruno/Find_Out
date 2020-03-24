@@ -16,5 +16,4 @@ const tabReducer: Reducer<TabState, TabAction> = (
       return state;
   }
 };
-
 export default tabReducer;

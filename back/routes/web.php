@@ -1,5 +1,7 @@
 <?php
-use Http\Controllers\UserController;
+
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +13,6 @@ use Http\Controllers\UserController;
 |
 */
 
-Route::group(['middleware' => ['web', 'activity']], function () {
-    Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
 });

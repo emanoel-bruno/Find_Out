@@ -1,9 +1,7 @@
 @import '~@react-md/theme/dist/color-palette';
 @import '~@react-md/button/dist/variables';
 @import '~@react-md/states/dist/variables';
-
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'https://fonts.googleapis.com/css?family=Roboto:400,500:700&display=swap';
+@import '~@react-md/states/dist/mixins';
 
 $rmd-theme-light: true;
 $rmd-theme-primary: #0091ff;

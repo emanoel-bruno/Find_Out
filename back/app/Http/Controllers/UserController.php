@@ -1,12 +1,71 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function index() {
+        //
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function store( Request $request ) {
+
+        $request->validate( [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:4|max:255'
+
+        ] );
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make( $request->password );
+        $user->remember_token = Str::random( 10 );
+        $user->save();
+        return response()->json( [ 'name' => $user->name, 'authToken' => $user->remember_token ] );
+    }
+
+    /**
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+
+    public function show( $id ) {
+        //
+    }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+
+    public function update( Request $request, $id ) {
+        //
+    }
+
     /**
     * Remove the specified resource from storage.
     *
@@ -15,6 +74,6 @@ class UserController extends Controller {
     */
 
     public function destroy( $id ) {
-        $user = User::destroy( $id );
+        //
     }
 }

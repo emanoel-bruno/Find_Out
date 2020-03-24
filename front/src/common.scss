@@ -17,6 +17,9 @@
   display: flex;
 }
 
+.d-block{
+  display: flex;
+}
 
 // Flex
 
@@ -67,9 +70,13 @@
 
 // Flex Children
 
-.fc-grow{
-  flex-grow: 1;
-}
+.fc-grow-1 { flex-grow: 1;}
+.fc-grow-2 { flex-grow: 1.5;}
+.fc-grow-3 { flex-grow: 2;}
+.fc-grow-4 { flex-grow: 2.5;}
+.fc-grow-5 { flex-grow: 3;}
+.fc-grow-6 { flex-grow: 3.5;}
+.fc-grow-7 { flex-grow: 4;}
 
 .fc-not-min{
   flex-shrink: 0;
@@ -88,6 +95,10 @@
 }
 
 // Text
+
+.t-primary{
+  color: $rmd-theme-primary!important;
+}
 
 .t-white{
   color: white !important;
@@ -199,28 +210,31 @@
   padding-top: 3.5rem;
 }
 
-.background-white{
+.b-white{
   background-color: white;
 }
 
+.b-transparent{
+  background-color: transparent;
+}
 
 // Spacement
 
 .m-0{ margin: 0; }
-.m-1{ margin: 1rem; }
-.m-2{ margin: 1.5rem; }
-.m-3{ margin: 2rem; }
+.m-1{ margin: 0.5rem; }
+.m-2{ margin: 1rem; }
+.m-3{ margin: 1.5rem; }
 
 
-.mt-1{ margin-top: 1rem; }
-.mt-2{ margin-top: 1.5rem; }
-.mt-3{ margin-top: 2rem; }
+.mt-1{ margin-top: 0.5rem; }
+.mt-2{ margin-top: 1rem; }
+.mt-3{ margin-top: 1.5rem }
 
 
-.mr-1{ margin-right: 1rem; }
-.mr-2{ margin-right: 1.5rem; }
-.mr-3{ margin-right: 2rem; }
+.mr-1{ margin-right: 0.5rem; }
+.mr-2{ margin-right: 1rem; }
+.mr-3{ margin-right: 1.5rem }
 
-.ml-1{ margin-left: 1rem; }
-.ml-2{ margin-left: 1.5rem; }
-.ml-3{ margin-left: 2rem; }
+.ml-1{ margin-left: 0.5rem; }
+.ml-2{ margin-left: 1rem; }
+.ml-3{ margin-left: 1.5rem; }

@@ -1,14 +1,16 @@
 import { withRouter, RouteProps } from 'react-router-dom';
 import * as React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 interface Props {
-  name:string
+  name: string;
 }
 const mapStateToProps = (state: any) => ({});
 const mapDispatchToProps = (dispatch: any) => ({});
 class Home extends React.Component<never, any> {
-  render(){
-    return <h1>Home</h1>
+  render() {
+    return <h1>Home</h1>;
   }
 }
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home) as React.ComponentType<any>);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Home) as React.ComponentType<any>
+);

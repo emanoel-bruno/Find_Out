@@ -7,10 +7,19 @@ export interface UserState {
   authToken: string;
   name: string;
 }
-
+const getGastoMensal = (ano:string,mes:string):string => {return `/gastos/${ano}/${mes}`};
+const getGastoAnual = (ano:string,mes:string):string => {return `/gastos/${ano}`};
+const getGastoDeputadoMensal = (deputado:number, ano:string,mes:string):string => {return `/gastos/${deputado}/${ano}/${mes}`};
+const getGastoDeputadoAnual = (deputado:number, ano:string,mes:string):string => {return `/gastos/${deputado}/${ano}`};
 export interface ApiState {
   base: string;
   setUser: string;
+  getRanking:string;
+  getRankingDeputados:string
+  getGastoMensal: typeof getGastoMensal
+  getGastoAnual: typeof getGastoAnual
+  getGastoDeputadoMensal: typeof getGastoDeputadoMensal
+  getGastoDeputadoAnual: typeof getGastoDeputadoAnual
 }
 
 export interface TabState {
@@ -26,8 +35,15 @@ export interface AppState {
 }
 
 export const apiInitial: ApiState = {
-  base: 'http://localhost:80',
-  setUser: '/register'
+  base: 'http://localhost:80/api',
+  setUser: '/register',
+  getRanking: '/redesociais/ranking',
+  getRankingDeputados: '/redesociais/ranking/deputados',
+  getGastoMensal : getGastoMensal,
+  getGastoAnual : getGastoAnual,
+  getGastoDeputadoMensal : getGastoDeputadoMensal,
+  getGastoDeputadoAnual : getGastoDeputadoAnual
+
 };
 
 export const mainInitial: MainState = {
@@ -53,3 +69,7 @@ const defaultState: AppState = {
 };
 
 export default defaultState;
+
+    // getGastoAnual:  return '/gastos/${ano}/'
+    // getGastoMensalDeputado': /gastos/${deputado}/${ano}/${mes}'
+    // getGastoAnualDeputado': /gastos/${deputado}/${ano}'

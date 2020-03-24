@@ -1,12 +1,14 @@
+@import '~@react-md/transition/dist/variables';
+@import '~@react-md/transition/dist/mixins';
+@import '~@react-md/theme/dist/color-palette';
+@import '~@react-md/theme/dist/helpers';
+@import '~@react-md/utils/dist/mixins';
+
 span[to='/login-/signup'] {
   pointer-events: none !important;
 }
 span[to='/login-/signup'] span {
   pointer-events: all;
-}
-
-#layout-nav-tree .rmd-icon {
-  color: $rmd-theme-primary;
 }
 
 #layout-header .rmd-icon {
@@ -15,4 +17,13 @@ span[to='/login-/signup'] span {
 
 .rmd-layout-main--offset{
   padding-top: 0 !important;
+}
+nav {
+.rmd-button{
+    @include rmd-states-theme-update-var(hover-color, transparent);
+    @include rmd-states-theme-update-var(background-color, transparent);
+    @include rmd-states-theme-update-var(pressed-color, transparent);
+    @include rmd-states-theme-update-var(selected-color, transparent);
+    @include rmd-states-theme-update-var(focus-color, transparent);
+  }
 }

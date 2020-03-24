@@ -1,49 +1,60 @@
-import React, { FC, ReactNode } from 'react';
+/* eslint-disable react/prop-types */
+import React, { FC, ReactNode, Component, HTMLAttributes } from 'react';
 import '../../index.scss';
 import '../../common.scss';
+import { Interface } from 'readline';
 
-interface ContainerProps {
+export interface ContainerProps {
   className?: string;
+  background?: 'white' | 'transparent';
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  children?: ReactNode;
   vertical: 'up' | 'middle' | 'down';
   horizontal: 'left' | 'right' | 'center';
-  direction: 'row' | 'column';
-  fullWidth: boolean;
-  fullHeight: boolean;
-  children?: ReactNode;
+  direction?: 'row' | 'column';
+  itemsVertical?: 'up' | 'middle' | 'down';
+  itemsHorizontal?: 'left' | 'right' | 'center';
+  columns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  gap?: 0 | 1 | 2 | 3 | 4 | 5;
 }
 
-function calculateClass(info: ContainerProps): string {
-  let c = info.className + ' background-white d-flex main-content ';
+interface ContainerState {
+  defaultClass: string;
+}
 
-  if (info.direction == 'row') {
-    c = c + 'f-row ';
-    c = info.horizontal == 'center' ? c + 'rh-center ' : c;
-    c = info.horizontal == 'left' ? c + 'rh-left ' : c;
-    c = info.horizontal == 'right' ? c + 'rh-right ' : c;
+class Container extends Component<ContainerProps, ContainerState> {
+  static defaultProps = {
+    background: 'transparent',
+    fullWidth: false,
+    fullHeight: false,
+    direction: 'row',
+    itemsVertical: 'middle',
+    itemsHorizontal: 'center',
+    columns: 2,
+    rows: 1,
+    gap: 0
+  };
 
-    c = info.vertical == 'middle' ? c + 'rv-middle ' : c;
-    c = info.vertical == 'up' ? c + 'rv-up ' : c;
-    c = info.vertical == 'down' ? c + 'rv-down ' : c;
-  } else {
-    c = c + 'f-column ';
-    c = info.horizontal == 'center' ? c + 'ch-center ' : c;
-    c = info.horizontal == 'left' ? c + 'ch-left ' : c;
-    c = info.horizontal == 'right' ? c + 'ch-right ' : c;
+  calculateDefaultClass(): string {
+    let c = ' ';
 
-    c = info.vertical == 'middle' ? c + 'cv-middle ' : c;
-    c = info.vertical == 'up' ? c + 'cv-up ' : c;
-    c = info.vertical == 'down' ? c + 'cv-down ' : c;
+    c = this.props.background == 'transparent' ? c + 'b-transparent ' : c;
+    c = this.props.background == 'white' ? c + 'b-white ' : c;
+
+    c = this.props.fullHeight ? c + 'min-h-100 h-100vh ' : c;
+    c = this.props.fullWidth ? c + 'w-100 ' : c;
+
+    return c;
   }
 
-  c = info.fullHeight ? c + 'min-h-100 h-100vh ' : c;
-  c = info.fullWidth ? c + 'w-100 ' : c;
-
-  return c;
+  constructor(props: ContainerProps) {
+    super(props);
+    this.state = {
+      defaultClass: this.calculateDefaultClass()
+    };
+  }
 }
-
-const Container: FC<ContainerProps> = props => {
-  // eslint-disable-next-line react/prop-types
-  return <div className={calculateClass(props)}>{props.children}</div>;
-};
 
 export default Container;

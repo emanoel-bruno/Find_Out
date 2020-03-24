@@ -1,25 +1,30 @@
-import { withRouter } from 'react-router-dom';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import React, { ReactNode } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Card, CardContent } from '@react-md/card';
 import { Text } from '@react-md/typography';
 import { Form, TextField, Password } from '@react-md/form';
 import { Divider } from '@react-md/divider';
 import { Button } from '@react-md/button';
 import { updateUser } from '../../actions/user';
+import { updateTab } from '../../actions/tab';
 import '../../common.scss';
 import { notify } from 'react-notify-toast';
 import Grid from '../layout/grid';
 import { AppState } from '../../state';
+import Dialog from '@material-ui/core/Dialog';
+import { DialogContent } from '@material-ui/core';
 
 interface PropsFromState {
   setUser: string;
+  visible:boolean;
 }
 interface PropsFromDispatch {
   updateUser: typeof updateUser;
+  updateTab: typeof updateTab;
 }
-type AllProps = PropsFromState & PropsFromDispatch;
+type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps;
 
 export type SignUpState = {
   email: string;
@@ -35,14 +40,21 @@ class SignUp extends React.Component<AllProps, SignUpState> {
       name: '',
       email: '',
       password: '',
-      loading: false
+      loading: false,
     };
+    console.log(this.state);
   }
 
   render(): ReactNode {
     return (
-      <Card>
-        <CardContent>
+      <Dialog
+        onClose={() => {
+          this.handleCancel();
+        }}
+        aria-labelledby="Dialog"
+        open={this.props.visible}
+      >
+        <DialogContent className="m-1">
           <Text
             className="m-0"
             type="headline-4"
@@ -123,17 +135,19 @@ class SignUp extends React.Component<AllProps, SignUpState> {
               </Button>
             </Grid>
           </Form>
-        </CardContent>
-      </Card>
+        </DialogContent>
+      </Dialog>
     );
   }
 
   handleCancel(): void {
+    this.props.updateTab('MAIN_CONTENT');
     this.setState({
       name: '',
       email: '',
       password: ''
     });
+
   }
 
   handleSubmit(): void {
@@ -144,12 +158,8 @@ class SignUp extends React.Component<AllProps, SignUpState> {
         email: this.state.email
       })
       .then(response => {
-        console.log(JSON.stringify(response));
         notify.show('User Created', 'success', 4000);
-        this.props.updateUser(response.data);
-      })
-      .catch(error => {
-        console.log(error);
+        if (response.data.authToken) this.props.updateUser(response.data);
       });
   }
 
@@ -168,11 +178,12 @@ class SignUp extends React.Component<AllProps, SignUpState> {
   }
 }
 
-const mapStateToProps = ({ api }: AppState) => ({
-  setUser: api.setUser
+const mapStateToProps = ({ api, tab }: AppState) => ({
+  setUser: api.setUser,
 });
 
 const mapDispatchToProps = {
-  updateUser
+  updateUser,
+  updateTab
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));

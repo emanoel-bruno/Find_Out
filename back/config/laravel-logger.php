@@ -8,17 +8,17 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'loggerDatabaseConnection'  => env( 'LARAVEL_LOGGER_DATABASE_CONNECTION', env( 'DB_CONNECTION', 'mysql' ) ),
-    'loggerDatabaseTable'       => env( 'LARAVEL_LOGGER_DATABASE_TABLE', 'laravel_logger_activity' ),
+    'loggerDatabaseConnection'  => env('LARAVEL_LOGGER_DATABASE_CONNECTION', env('DB_CONNECTION', 'mysql')),
+    'loggerDatabaseTable'       => env('LARAVEL_LOGGER_DATABASE_TABLE', 'laravel_logger_activity'),
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Logger Roles Settings - ( laravel roles not required if false )
+    | Laravel Logger Roles Settings - (laravel roles not required if false)
     |--------------------------------------------------------------------------
     */
 
-    'rolesEnabled'   => env( 'LARAVEL_LOGGER_ROLES_ENABLED', false ),
-    'rolesMiddlware' => env( 'LARAVEL_LOGGER_ROLES_MIDDLWARE', 'role:admin' ),
+    'rolesEnabled'   => env('LARAVEL_LOGGER_ROLES_ENABLED', false),
+    'rolesMiddlware' => env('LARAVEL_LOGGER_ROLES_MIDDLWARE', 'role:admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,8 +26,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'loggerMiddlewareEnabled'   => env( 'LARAVEL_LOGGER_MIDDLEWARE_ENABLED', true ),
-    'loggerMiddlewareExcept'    => array_filter( explode( ',', trim( env( 'LARAVEL_LOGGER_MIDDLEWARE_EXCEPT' ) ) ) ),
+    'loggerMiddlewareEnabled'   => env('LARAVEL_LOGGER_MIDDLEWARE_ENABLED', true),
+    'loggerMiddlewareExcept'    => array_filter(explode(',', trim(env('LARAVEL_LOGGER_MIDDLEWARE_EXCEPT')))),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,15 +47,15 @@ return [
     | Laravel Logger Search Enable/Disable
     |--------------------------------------------------------------------------
     */
-    'enableSearch'      => env( 'LARAVEL_LOGGER_ENABLE_SEARCH', 'true' ),
+    'enableSearch'      => env('LARAVEL_LOGGER_ENABLE_SEARCH', 'false'),
 
     /*
     |--------------------------------------------------------------------------
     | Laravel Logger Search Parameters
     |--------------------------------------------------------------------------
     */
-    // you can add or remove from these options [description, user, method, route, ip]
-    'searchFields'  => env( 'LARAVEL_LOGGER_SEARCH_FIELDS', 'description,user,method,route,ip' ),
+    // you can add or remove from these options [description,user,method,route,ip]
+    'searchFields'  => env('LARAVEL_LOGGER_SEARCH_FIELDS', 'description,user,method,route,ip'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'defaultUserModel' => env( 'LARAVEL_LOGGER_USER_MODEL', 'App\User' ),
+    'defaultUserModel' => env('LARAVEL_LOGGER_USER_MODEL', 'App\User'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'defaultUserIDField' => env( 'LARAVEL_LOGGER_USER_ID_FIELD', 'id' ),
+    'defaultUserIDField' => env('LARAVEL_LOGGER_USER_ID_FIELD', 'id'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,15 +81,15 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'disableRoutes' => env( 'LARAVEL_LOGGER_DISABLE_ROUTES', false ),
+    'disableRoutes' => env('LARAVEL_LOGGER_DISABLE_ROUTES', false),
 
     /*
     |--------------------------------------------------------------------------
     | Laravel Logger Pagination Settings
     |--------------------------------------------------------------------------
     */
-    'loggerPaginationEnabled' => env( 'LARAVEL_LOGGER_PAGINATION_ENABLED', true ),
-    'loggerPaginationPerPage' => env( 'LARAVEL_LOGGER_PAGINATION_PER_PAGE', 200 ),
+    'loggerPaginationEnabled' => env('LARAVEL_LOGGER_PAGINATION_ENABLED', true),
+    'loggerPaginationPerPage' => env('LARAVEL_LOGGER_PAGINATION_PER_PAGE', 25),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'loggerDatatables'              => env( 'LARAVEL_LOGGER_DATATABLES_ENABLED', false ),
+    'loggerDatatables'              => env('LARAVEL_LOGGER_DATATABLES_ENABLED', false),
     'loggerDatatablesCSScdn'        => 'https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css',
     'loggerDatatablesJScdn'         => 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js',
     'loggerDatatablesJSVendorCdn'   => 'https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js',
@@ -108,8 +108,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'enableSubMenu'     => env( 'LARAVEL_LOGGER_DASHBOARD_MENU_ENABLED', true ),
-    'enableDrillDown'   => env( 'LARAVEL_LOGGER_DASHBOARD_DRILLABLE', true ),
+    'enableSubMenu'     => env('LARAVEL_LOGGER_DASHBOARD_MENU_ENABLED', true),
+    'enableDrillDown'   => env('LARAVEL_LOGGER_DASHBOARD_DRILLABLE', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'logDBActivityLogFailuresToFile' => env( 'LARAVEL_LOGGER_LOG_RECORD_FAILURES_TO_FILE', true ),
+    'logDBActivityLogFailuresToFile' => env('LARAVEL_LOGGER_LOG_RECORD_FAILURES_TO_FILE', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -125,7 +125,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'enablePackageFlashMessageBlade' => env( 'LARAVEL_LOGGER_FLASH_MESSAGE_BLADE_ENABLED', true ),
+    'enablePackageFlashMessageBlade' => env('LARAVEL_LOGGER_FLASH_MESSAGE_BLADE_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -134,10 +134,10 @@ return [
     */
 
     // The parent Blade file
-    'loggerBladeExtended'       => env( 'LARAVEL_LOGGER_LAYOUT', 'layouts.app' ),
+    'loggerBladeExtended'       => env('LARAVEL_LOGGER_LAYOUT', 'layouts.app'),
 
     // Switch Between bootstrap 3 `panel` and bootstrap 4 `card` classes
-    'bootstapVersion'           => env( 'LARAVEL_LOGGER_BOOTSTRAP_VERSION', '4' ),
+    'bootstapVersion'           => env('LARAVEL_LOGGER_BOOTSTRAP_VERSION', '4'),
 
     // Additional Card classes for styling -
     // See: https://getbootstrap.com/docs/4.0/components/card/#background-and-color
@@ -145,9 +145,9 @@ return [
     'bootstrapCardClasses'      => '',
 
     // Blade Extension Placement
-    'bladePlacement'            => env( 'LARAVEL_LOGGER_BLADE_PLACEMENT', 'yield' ),
-    'bladePlacementCss'         => env( 'LARAVEL_LOGGER_BLADE_PLACEMENT_CSS', 'template_linked_css' ),
-    'bladePlacementJs'          => env( 'LARAVEL_LOGGER_BLADE_PLACEMENT_JS', 'footer_scripts' ),
+    'bladePlacement'            => env('LARAVEL_LOGGER_BLADE_PLACEMENT', 'yield'),
+    'bladePlacementCss'         => env('LARAVEL_LOGGER_BLADE_PLACEMENT_CSS', 'template_linked_css'),
+    'bladePlacementJs'          => env('LARAVEL_LOGGER_BLADE_PLACEMENT_JS', 'footer_scripts'),
 
     /*
     |--------------------------------------------------------------------------
@@ -156,19 +156,19 @@ return [
     */
 
     // jQuery
-    'enablejQueryCDN'           => env( 'LARAVEL_LOGGER_JQUERY_CDN_ENABLED', true ),
-    'JQueryCDN'                 => env( 'LARAVEL_LOGGER_JQUERY_CDN_URL', 'https://code.jquery.com/jquery-3.2.1.slim.min.js' ),
+    'enablejQueryCDN'           => env('LARAVEL_LOGGER_JQUERY_CDN_ENABLED', true),
+    'JQueryCDN'                 => env('LARAVEL_LOGGER_JQUERY_CDN_URL', 'https://code.jquery.com/jquery-3.2.1.slim.min.js'),
 
     // Bootstrap
-    'enableBootstrapCssCDN'     => env( 'LARAVEL_LOGGER_BOOTSTRAP_CSS_CDN_ENABLED', true ),
-    'bootstrapCssCDN'           => env( 'LARAVEL_LOGGER_BOOTSTRAP_CSS_CDN_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' ),
-    'enableBootstrapJsCDN'      => env( 'LARAVEL_LOGGER_BOOTSTRAP_JS_CDN_ENABLED', true ),
-    'bootstrapJsCDN'            => env( 'LARAVEL_LOGGER_BOOTSTRAP_JS_CDN_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' ),
-    'enablePopperJsCDN'         => env( 'LARAVEL_LOGGER_POPPER_JS_CDN_ENABLED', true ),
-    'popperJsCDN'               => env( 'LARAVEL_LOGGER_POPPER_JS_CDN_URL', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' ),
+    'enableBootstrapCssCDN'     => env('LARAVEL_LOGGER_BOOTSTRAP_CSS_CDN_ENABLED', true),
+    'bootstrapCssCDN'           => env('LARAVEL_LOGGER_BOOTSTRAP_CSS_CDN_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'),
+    'enableBootstrapJsCDN'      => env('LARAVEL_LOGGER_BOOTSTRAP_JS_CDN_ENABLED', true),
+    'bootstrapJsCDN'            => env('LARAVEL_LOGGER_BOOTSTRAP_JS_CDN_URL', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'),
+    'enablePopperJsCDN'         => env('LARAVEL_LOGGER_POPPER_JS_CDN_ENABLED', true),
+    'popperJsCDN'               => env('LARAVEL_LOGGER_POPPER_JS_CDN_URL', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'),
 
     // Font Awesome
-    'enableFontAwesomeCDN'      => env( 'LARAVEL_LOGGER_FONT_AWESOME_CDN_ENABLED', true ),
-    'fontAwesomeCDN'            => env( 'LARAVEL_LOGGER_FONT_AWESOME_CDN_URL', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' ),
+    'enableFontAwesomeCDN'      => env('LARAVEL_LOGGER_FONT_AWESOME_CDN_ENABLED', true),
+    'fontAwesomeCDN'            => env('LARAVEL_LOGGER_FONT_AWESOME_CDN_URL', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'),
 
 ];
